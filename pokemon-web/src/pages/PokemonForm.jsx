@@ -9,7 +9,7 @@ function PokemonForm({ isEdit }){
   const [pokemon, setPokemon] = useState({ nombre:'', tipo:'', nivel:'', ps:'', ataque:'', defensa:'', velocidad:'', imagenUrl:'' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  useEffect(()=>{if(isEdit){setLoading(true);findById(id).then(data=>{setPokemon(data);setLoading(false)}).catch(err=>{setError(getErrorMessage(err));setLoading(false});}},[isEdit,id]);
+  useEffect(() => { if (isEdit) { setLoading(true); findById(id).then(data => { setPokemon({ nombre: data.nombre ?? '', tipo: data.tipo ?? '', nivel: data.nivel ?? '', ps: data.ps ?? '', ataque: data.ataque ?? '', defensa: data.defensa ?? '', velocidad: data.velocidad ?? '', imagenUrl: data.imagenUrl ?? '' }); setLoading(false); }).catch(err => { setError(getErrorMessage(err)); setLoading(false); }); } }, [isEdit, id]);
   const handleChange=e=>{const {name,value}=e.target;setPokemon(prev=>({ ...prev, [name]: value }));};
   const handleSubmit=async e=>{e.preventDefault();setLoading(true);try{if(isEdit){await update(id,pokemon);}else{await create(pokemon);}navigate('/');}catch(err){setError(getErrorMessage(err));}finally{setLoading(false);}};
   return(

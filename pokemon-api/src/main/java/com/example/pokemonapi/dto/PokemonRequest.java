@@ -12,5 +12,7 @@ public record PokemonRequest(
     @NotNull @Positive Integer ataque,
     @NotNull @Positive Integer defensa,
     @NotNull @Positive Integer velocidad,
-    String imagenUrl
+    String imagenUrl,
+    Integer numeroDex,
+    String lore
 ) {}

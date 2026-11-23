@@ -28,10 +28,12 @@ public class Pokemon {
     private Integer defensa;
     private Integer velocidad;
     private String imagenUrl;
+    private Integer numeroDex;
+    private String lore;
 
     public Pokemon() {}
 
-    public Pokemon(Long id, String nombre, String tipo, Integer nivel, Integer ps, Integer ataque, Integer defensa, Integer velocidad, String imagenUrl) {
+    public Pokemon(Long id, String nombre, String tipo, Integer nivel, Integer ps, Integer ataque, Integer defensa, Integer velocidad, String imagenUrl, Integer numeroDex, String lore) {
         this.id = id;
         this.nombre = nombre;
         this.tipo = tipo;
@@ -41,6 +43,8 @@ public class Pokemon {
         this.defensa = defensa;
         this.velocidad = velocidad;
         this.imagenUrl = imagenUrl;
+        this.numeroDex = numeroDex;
+        this.lore = lore;
     }
 
     public Long getId() { return id; }
@@ -61,4 +65,8 @@ public class Pokemon {
     public void setVelocidad(Integer velocidad) { this.velocidad = velocidad; }
     public String getImagenUrl() { return imagenUrl; }
     public void setImagenUrl(String imagenUrl) { this.imagenUrl = imagenUrl; }
+    public Integer getNumeroDex() { return numeroDex; }
+    public void setNumeroDex(Integer numeroDex) { this.numeroDex = numeroDex; }
+    public String getLore() { return lore; }
+    public void setLore(String lore) { this.lore = lore; }
 }

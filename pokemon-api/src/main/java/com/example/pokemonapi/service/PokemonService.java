@@ -28,14 +28,14 @@ public class PokemonService {
         return repository.findAll().stream()
                 .map(p -> new PokemonDetailDTO(
                         p.getId(), p.getNombre(), p.getTipo(), p.getNivel(), p.getPs(),
-                        p.getAtaque(), p.getDefensa(), p.getVelocidad(), p.getImagenUrl()))
+                        p.getAtaque(), p.getDefensa(), p.getVelocidad(), p.getImagenUrl(), p.getNumeroDex(), p.getLore()))
                 .collect(Collectors.toList());
     }
 
     public PokemonDetailDTO getById(Long id) {
         Pokemon p = repository.findById(id).orElseThrow(() -> new NotFoundException("Pokemon not found"));
         return new PokemonDetailDTO(p.getId(), p.getNombre(), p.getTipo(), p.getNivel(), p.getPs(),
-                p.getAtaque(), p.getDefensa(), p.getVelocidad(), p.getImagenUrl());
+                p.getAtaque(), p.getDefensa(), p.getVelocidad(), p.getImagenUrl(), p.getNumeroDex(), p.getLore());
     }
 
     public PokemonDetailDTO create(PokemonRequest request) {
@@ -48,9 +48,11 @@ public class PokemonService {
         p.setDefensa(request.defensa());
         p.setVelocidad(request.velocidad());
         p.setImagenUrl(request.imagenUrl());
+        p.setNumeroDex(request.numeroDex());
+        p.setLore(request.lore());
         Pokemon saved = repository.save(p);
         return new PokemonDetailDTO(saved.getId(), saved.getNombre(), saved.getTipo(), saved.getNivel(), saved.getPs(),
-                saved.getAtaque(), saved.getDefensa(), saved.getVelocidad(), saved.getImagenUrl());
+                saved.getAtaque(), saved.getDefensa(), saved.getVelocidad(), saved.getImagenUrl(), saved.getNumeroDex(), saved.getLore());
     }
 
     public PokemonDetailDTO update(Long id, PokemonRequest request) {
@@ -63,9 +65,11 @@ public class PokemonService {
         p.setDefensa(request.defensa());
         p.setVelocidad(request.velocidad());
         p.setImagenUrl(request.imagenUrl());
+        p.setNumeroDex(request.numeroDex());
+        p.setLore(request.lore());
         Pokemon saved = repository.save(p);
         return new PokemonDetailDTO(saved.getId(), saved.getNombre(), saved.getTipo(), saved.getNivel(), saved.getPs(),
-                saved.getAtaque(), saved.getDefensa(), saved.getVelocidad(), saved.getImagenUrl());
+                saved.getAtaque(), saved.getDefensa(), saved.getVelocidad(), saved.getImagenUrl(), saved.getNumeroDex(), saved.getLore());
     }
 
     public void delete(Long id) {

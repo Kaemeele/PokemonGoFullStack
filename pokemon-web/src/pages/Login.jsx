@@ -6,6 +6,7 @@ function Login(){
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
   const navigate = useNavigate();
   const handleSubmit = async e => {
     e.preventDefault();
@@ -28,7 +29,10 @@ function Login(){
           </div>
           <div className="mb-3">
             <label className="form-label">Contraseña</label>
-            <input type="password" className="form-control" value={password} onChange={e => setPassword(e.target.value)} required />
+            <div className="input-group">
+              <input type={showPassword ? "text" : "password"} className="form-control" value={password} onChange={e => setPassword(e.target.value)} required />
+              <button type="button" className="btn btn-outline-secondary" onClick={() => setShowPassword(!showPassword)}>{showPassword ? "🙈" : "👁️"}</button>
+            </div>
           </div>
           <button type="submit" className="btn btn-primary w-100">Entrar</button>
         </form>

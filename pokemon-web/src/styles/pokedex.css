@@ -1,0 +1,107 @@
+/* Pokedex theme colors */
+:root {
+  --pokedex-red: #DC2626;
+  --pokedex-red-dark: #B91C1C;
+  --pokedex-blue: #2563EB;
+  --pokedex-cyan: #38BDF8;
+  --pokedex-yellow: #FACC15;
+  --pokedex-bg-light: #f8f9fa;
+  --pokedex-bg-dark: #212529;
+  --pokedex-text: #212529;
+  --pokedex-text-light: #f8f9fa;
+}
+
+/* Global fonts */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--pokedex-bg-light);
+  color: var(--pokedex-text);
+}
+
+h1, h2, h3, .navbar-brand {
+  font-family: 'Press Start 2P', cursive;
+}
+
+/* Navbar styling */
+.navbar {
+  background-color: var(--pokedex-red);
+  border-bottom: 4px solid var(--pokedex-yellow);
+}
+.navbar .navbar-brand {
+  font-size: 1.5rem;
+  position: relative;
+  padding-left: 2rem;
+}
+.navbar .navbar-brand::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  background: radial-gradient(circle at 30% 30%, white 20%, transparent 20%),
+              radial-gradient(circle at 70% 70%, white 20%, transparent 20%);
+  border: 2px solid var(--pokedex-blue);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 2px var(--pokedex-blue);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--pokedex-blue);
+  border-color: var(--pokedex-blue);
+}
+.btn-primary:hover {
+  background-color: var(--pokedex-cyan);
+  border-color: var(--pokedex-cyan);
+}
+
+/* Card styling for login and form */
+.card {
+  border: 2px solid var(--pokedex-red-dark);
+  border-radius: 0.5rem;
+}
+.card-header {
+  background-color: var(--pokedex-red);
+  color: var(--pokedex-text-light);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.25rem;
+}
+
+/* Input focus */
+.form-control:focus {
+  border-color: var(--pokedex-blue);
+  box-shadow: 0 0 0 0.2rem rgba(37,99,235,.25);
+}
+
+/* Table styling */
+.table thead th {
+  background-color: var(--pokedex-red);
+  color: var(--pokedex-text-light);
+}
+.table tbody tr:hover {
+  background-color: var(--pokedex-bg-light);
+}
+
+/* Badges for Pokemon type */
+.badge-type-fire { background-color: #ef4444; color: #fff; }
+.badge-type-water { background-color: #3b82f6; color: #fff; }
+.badge-type-grass { background-color: #10b981; color: #fff; }
+.badge-type-electric { background-color: #fbbf24; color: #212529; }
+.badge-type-psychic { background-color: #a78bfa; color: #fff; }
+.badge-type-dragon { background-color: #6366f1; color: #fff; }
+
+/* Pokemon image thumbnail */
+.pokemon-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--pokedex-blue);
+}
+
+/* Navbar links active */
+.nav-link.active, .nav-link:hover {
+  color: var(--pokedex-yellow) !important;
+}

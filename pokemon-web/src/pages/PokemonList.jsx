@@ -34,7 +34,7 @@ function PokemonList() {
   };
   if (loading) return <p>Cargando...</p>;
   return (
-    <div>
+    <div className="container page-wrapper">
       <h2>Pokémon</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {isAuthenticated ? (

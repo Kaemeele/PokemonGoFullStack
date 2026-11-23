@@ -10,7 +10,7 @@ function App(){
   const { isAuthenticated, isAdmin, logout } = useContext(AuthContext);
   return (
     <Router>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+      <nav className="navbar navbar-expand-lg pokedex-navbar">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">Pokédex Gestión</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

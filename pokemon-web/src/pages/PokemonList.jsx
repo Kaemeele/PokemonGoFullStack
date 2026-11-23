@@ -8,7 +8,7 @@ function PokemonList() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const [deletingId, setDeletingId] = useState(null);
-  const { isAdmin } = useContext(AuthContext);
+  const { isAuthenticated, isAdmin, logout } = useContext(AuthContext);
   const fetch = async () => {
     try {
       const data = await listPublic();
@@ -33,11 +33,18 @@ function PokemonList() {
     }
   };
   if (loading) return <p>Cargando...</p>;
-  if (!loading && pokemons.length === 0) return <p>No hay Pokémon registrados.</p>;
   return (
     <div>
       <h2>Pokémon</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
+      {isAuthenticated ? (
+        <>
+          <button onClick={logout}>Cerrar sesión</button>
+          {isAdmin && <Link to="/admin"><button>Admin</button></Link>}
+        </>
+      ) : (
+        <Link to="/login"><button>Login</button></Link>
+      )}
       {isAdmin && <Link to="/new"><button>Nuevo Pokémon</button></Link>}
       <table>
         <thead>
@@ -64,6 +71,7 @@ function PokemonList() {
           ))}
         </tbody>
       </table>
+      {pokemons.length === 0 && <p>No hay Pokémon registrados.</p>}
     </div>
   );
 }

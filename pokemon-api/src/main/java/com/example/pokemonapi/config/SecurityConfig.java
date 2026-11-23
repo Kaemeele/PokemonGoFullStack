@@ -42,8 +42,9 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**", "/swagger-ui.html", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
+                .requestMatchers("/api/auth/**", "/swagger-ui.html", "/v3/api-docs/**", "/swagger-ui/**", "/h2-console/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/v1/pokemons/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.GET, "/api/v2/pokemons/**").permitAll()
                 .requestMatchers(HttpMethod.PUT, "/api/v2/pokemons/**").hasRole("ADMIN")
